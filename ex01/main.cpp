@@ -6,24 +6,47 @@
 /*   By: sel-bouy <sel-bouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 19:30:51 by sel-bouy          #+#    #+#             */
-/*   Updated: 2025/02/05 17:28:34 by sel-bouy         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:45:03 by sel-bouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void    add()
+void    add(PhoneBook phonebook)
 {
-    std::string name;
+    std::string f_n, l_n, n_m, d_s, p_n;
     std::cout << "First Name : ";
-    std::cin >> name;
+    std::getline(std::cin, f_n);
+    if (std::cin.eof()) exit(0);
+    
+    std::cout << "Last Name : ";
+    std::getline(std::cin, l_n);
+    if (std::cin.eof()) exit(0);
+    
+    std::cout << "Nick Name : ";
+    std::getline(std::cin, n_m);
+    if (std::cin.eof()) exit(0);
+    
+    std::cout << "Dark Secret : ";
+    std::getline(std::cin, d_s);
+    if (std::cin.eof()) exit(0);
+    
+    std::cout << "Phone Number : ";
+    std::getline(std::cin, p_n);
+    if (std::cin.eof()) exit(0);
+    
+    Contact contact;
+    contact.set_value(f_n, l_n, n_m, d_s, p_n);
+    phonebook.add_new_contact(contact);
     
 }
 
-int main(int ac)
+int main(int ac, char **av)
 {
+    (void)av;
     if (ac == 1)
     {
+        PhoneBook phonebook;
         std::string get_line;
         while (1)
         {
@@ -31,7 +54,7 @@ int main(int ac)
             if(get_line == "EXIT")
                 exit(0);
                 else if(get_line == "ADD")
-                    add();
+                    add(phonebook);
                 // else if(get_line == "SEARCH")
                     // search();
         }
