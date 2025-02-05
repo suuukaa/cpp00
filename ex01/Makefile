@@ -6,15 +6,15 @@
 #    By: sel-bouy <sel-bouy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/25 19:30:13 by sel-bouy          #+#    #+#              #
-#    Updated: 2025/01/25 19:30:41 by sel-bouy         ###   ########.fr        #
+#    Updated: 2025/02/05 17:03:49 by sel-bouy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PhoneBook
 CC = c++ -std=c++98
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS = 
 
-SRC = phonebook.cpp
+SRC = phonebook.cpp main.cpp
 
 all: $(NAME)
 

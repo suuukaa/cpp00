@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-bouy <sel-bouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 19:30:51 by sel-bouy          #+#    #+#             */
-/*   Updated: 2025/01/25 20:22:47 by sel-bouy         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:28:34 by sel-bouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+void    add()
+{
+    std::string name;
+    std::cout << "First Name : ";
+    std::cin >> name;
+    
+}
 
 int main(int ac)
 {
@@ -22,7 +30,10 @@ int main(int ac)
             std::getline(std::cin, get_line);
             if(get_line == "EXIT")
                 exit(0);
-                // else if()
+                else if(get_line == "ADD")
+                    add();
+                // else if(get_line == "SEARCH")
+                    // search();
         }
         
     }
