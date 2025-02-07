@@ -12,7 +12,7 @@
 
 #include "PhoneBook.hpp"
 
-void    add(PhoneBook phonebook)
+void    add(PhoneBook *phonebook)
 {
     std::string f_n, l_n, n_m, d_s, p_n;
     std::cout << "First Name : ";
@@ -37,15 +37,23 @@ void    add(PhoneBook phonebook)
     
     Contact contact;
     contact.set_value(f_n, l_n, n_m, d_s, p_n);
-    phonebook.add_new_contact(contact);
-    
+    phonebook->add_new_contact(contact);
 }
 
-void    search(PhoneBook PhoneBook)
+void    search(PhoneBook *PhoneBook)
 {
+    Contact contact;
     int i = 0;
-    std::cout<< "________________________________________"<<std::endl;
-    while(i < PhoneBook.get_index()){
+    std::cout<<"---------------------------------------------"<<std::endl;
+    std::cout<<"|     Index|First name| Last name|  nickname|"<<std::endl;
+    std::cout<<"---------------------------------------------"<<std::endl;
+    while(i < PhoneBook->get_index()){
+        contact = PhoneBook->get_contact(i);
+        std::cout<<'|'<< std::setw(10) << i+1;
+        std::cout<<'|'<< std::setw(10) << contact.get_f_n();
+        std::cout<<'|'<< std::setw(10) << contact.get_l_n();
+        std::cout<<'|'<< std::setw(10) << contact.get_n_n()<< '|'<<std::endl;
+        std::cout<<"---------------------------------------------"<<std::endl;
         i++;
     }
 }
@@ -59,15 +67,15 @@ int main(int ac, char **av)
         std::string get_line;
         while (1)
         {
+            std::cout<< "chose a command : ADD or SEARCH or EXIT"<<std::endl;
             std::getline(std::cin, get_line);
             if(get_line == "EXIT")
                 exit(0);
                 else if(get_line == "ADD")
-                    add(phonebook);
+                    add(&phonebook);
                 else if(get_line == "SEARCH")
-                    search(phonebook);
+                    search(&phonebook);
         }
-        
     }
     return 0;
 }
