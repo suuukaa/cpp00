@@ -41,6 +41,15 @@ void    add(PhoneBook phonebook)
     
 }
 
+void    search(PhoneBook PhoneBook)
+{
+    int i = 0;
+    std::cout<< "________________________________________"<<std::endl;
+    while(i < PhoneBook.get_index()){
+        i++;
+    }
+}
+
 int main(int ac, char **av)
 {
     (void)av;
@@ -55,8 +64,8 @@ int main(int ac, char **av)
                 exit(0);
                 else if(get_line == "ADD")
                     add(phonebook);
-                // else if(get_line == "SEARCH")
-                    // search();
+                else if(get_line == "SEARCH")
+                    search(phonebook);
         }
         
     }

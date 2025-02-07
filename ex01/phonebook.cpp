@@ -11,6 +11,10 @@ void PhoneBook::add_new_contact(Contact new_contact)
     index_contact++;
 }
 
-PhoneBook::PhoneBook(int index_cotact){
+PhoneBook::PhoneBook(){
     index_contact = 0;
+}
+
+int PhoneBook::get_index(){
+    return index_contact;
 }
