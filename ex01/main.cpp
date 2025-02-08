@@ -18,22 +18,53 @@ void    add(PhoneBook *phonebook)
     std::cout << "First Name : ";
     std::getline(std::cin, f_n);
     if (std::cin.eof()) exit(0);
+    while(f_n.empty()){
+        std::cout << "you didn't enter anything"<<std::endl;
+        std::cout << "First Name : ";
+        std::getline(std::cin, f_n);
+        if (std::cin.eof()) exit(0);
+}
     
     std::cout << "Last Name : ";
     std::getline(std::cin, l_n);
     if (std::cin.eof()) exit(0);
-    
+        while(l_n.empty()){
+        std::cout << "you didn't enter anything"<<std::endl;
+        std::cout << "First Name : ";
+        std::getline(std::cin, l_n);
+        if (std::cin.eof()) exit(0);
+}
+
+
     std::cout << "Nick Name : ";
     std::getline(std::cin, n_m);
     if (std::cin.eof()) exit(0);
+        while(n_m.empty()){
+        std::cout << "you didn't enter anything"<<std::endl;
+        std::cout << "First Name : ";
+        std::getline(std::cin, n_m);
+        if (std::cin.eof()) exit(0);
+}
     
     std::cout << "Dark Secret : ";
     std::getline(std::cin, d_s);
     if (std::cin.eof()) exit(0);
+        while(d_s.empty()){
+        std::cout << "you didn't enter anything"<<std::endl;
+        std::cout << "First Name : ";
+        std::getline(std::cin, d_s);
+        if (std::cin.eof()) exit(0);
+}
     
     std::cout << "Phone Number : ";
     std::getline(std::cin, p_n);
     if (std::cin.eof()) exit(0);
+        while(p_n.empty()){
+        std::cout << "you didn't enter anything"<<std::endl;
+        std::cout << "First Name : ";
+        std::getline(std::cin, p_n);
+        if (std::cin.eof()) exit(0);
+}
     
     Contact contact;
     contact.set_value(f_n, l_n, n_m, d_s, p_n);
@@ -69,6 +100,7 @@ int main(int ac, char **av)
         {
             std::cout<< "chose a command : ADD or SEARCH or EXIT"<<std::endl;
             std::getline(std::cin, get_line);
+            if (std::cin.eof()) exit(0);
             if(get_line == "EXIT")
                 exit(0);
                 else if(get_line == "ADD")
