@@ -6,10 +6,10 @@ void PhoneBook::add_new_contact(Contact new_contact)
         contact[index_contact] = new_contact;
         index_contact++;
     }
-    if(index_contact > 8){
-        contact[(index_contact % 8) - 1] = new_contact;
+    else{
+        contact[(index_contact % 8)] = new_contact;
         index_contact++;
-        index_contact = (index_contact % 8) - 1;
+        index_contact = (index_contact % 8);
     }
     if (sh7al_3ndi < 8)
         sh7al_3ndi++;

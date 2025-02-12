@@ -17,7 +17,7 @@ int main(int ac, char **av)
 {
     std::string str;
     
-    if (ac > 0){
+    if (ac > 1){
         for(int i = 1; av[i]; i++){
             str = av[i];
             for(int j = 0; str[j]; j++){
@@ -28,5 +28,5 @@ int main(int ac, char **av)
         std::cout<<std::endl;
     }
     else
-        std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+        std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 }

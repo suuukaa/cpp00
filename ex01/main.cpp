@@ -12,57 +12,123 @@
 
 #include "PhoneBook.hpp"
 
+int is_printable(std::string s){
+    int i = 0;
+    while(s[i]){
+        if(s[i] < 32 || s[i] > 126)
+            return (1);
+        i++;
+    }
+    return 0;
+}
+
 void    add(PhoneBook *phonebook)
 {
     std::string f_n, l_n, n_m, d_s, p_n;
     std::cout << "First Name : ";
     std::getline(std::cin, f_n);
-    if (std::cin.eof()) exit(0);
-    while(f_n.empty()){
-        std::cout << "you didn't enter anything"<<std::endl;
+    if (std::cin.eof())
+    {
+        std::cout << " ^D  : exiting ..." << std::endl;
+        exit(0);
+    }
+        
+    while(1){
+        while(f_n.empty() || is_printable(f_n)){
+            std::cout << "you didn't enter anything"<<std::endl;
         std::cout << "First Name : ";
         std::getline(std::cin, f_n);
-        if (std::cin.eof()) exit(0);
-}
-    
+            if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
+        }
+        break ;
+    }
+
     std::cout << "Last Name : ";
     std::getline(std::cin, l_n);
-    if (std::cin.eof()) exit(0);
-        while(l_n.empty()){
+        if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
+    while(1){
+        while(l_n.empty() || is_printable(l_n)){
         std::cout << "you didn't enter anything"<<std::endl;
-        std::cout << "First Name : ";
+        std::cout << "Last Name : ";
         std::getline(std::cin, l_n);
-        if (std::cin.eof()) exit(0);
+            if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
         }
+        break;
+    }
 
     std::cout << "Nick Name : ";
     std::getline(std::cin, n_m);
-    if (std::cin.eof()) exit(0);
-        while(n_m.empty()){
+        if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
+    while(1){
+        while(n_m.empty() || is_printable(n_m)){
         std::cout << "you didn't enter anything"<<std::endl;
-        std::cout << "First Name : ";
+        std::cout << "Nick Name : ";
         std::getline(std::cin, n_m);
-        if (std::cin.eof()) exit(0);
+            if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
         }
+        break;
+    }
     
     std::cout << "Dark Secret : ";
     std::getline(std::cin, d_s);
-    if (std::cin.eof()) exit(0);
-        while(d_s.empty()){
+        if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
+    while(1){    
+        while(d_s.empty() || is_printable(d_s)){
         std::cout << "you didn't enter anything"<<std::endl;
-        std::cout << "First Name : ";
+        std::cout << "Dark Secret : ";
         std::getline(std::cin, d_s);
-        if (std::cin.eof()) exit(0);
+            if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
         }
+        break;
+    }
     
     std::cout << "Phone Number : ";
     std::getline(std::cin, p_n);
-    if (std::cin.eof()) exit(0);
-        while(p_n.empty()){
+        if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
+    while(1){
+        while(p_n.empty() || is_printable(p_n)){
         std::cout << "you didn't enter anything"<<std::endl;
-        std::cout << "First Name : ";
+        std::cout << "Phone Number : ";
         std::getline(std::cin, p_n);
-        if (std::cin.eof()) exit(0);
+            if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
+        }
+        break;
     }
     
     Contact contact;
@@ -106,7 +172,11 @@ void    search(PhoneBook *PhoneBook)
     std::cout<<"Enter Index : ";
     std::string in;
     std::getline(std::cin,in);
-    if (std::cin.eof()) exit(0);
+        if (std::cin.eof())
+            {
+                std::cout << " ^D  : exiting ..." << std::endl;
+                exit(0);
+            }
     int a = atoi(in.c_str());
 
     if (a <= 0 || a > PhoneBook->get_index()){
@@ -131,13 +201,17 @@ int main(int ac, char **av)
         {
             std::cout<< "chose a command : ADD or SEARCH or EXIT"<<std::endl;
             std::getline(std::cin, get_line);
-            if (std::cin.eof()) exit(0);
+                if (std::cin.eof())
+                {
+                    std::cout << " ^D  : exiting ..." << std::endl;
+                    exit(0);
+                }
             if(get_line == "EXIT")
                 exit(0);
-                else if(get_line == "ADD")
-                    add(&phonebook);
-                else if(get_line == "SEARCH")
-                    search(&phonebook);
+            else if(get_line == "ADD")
+                add(&phonebook);
+            else if(get_line == "SEARCH")
+                search(&phonebook);
         }
     }
     return 0;
