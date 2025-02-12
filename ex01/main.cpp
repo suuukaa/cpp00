@@ -24,8 +24,8 @@ void    add(PhoneBook *phonebook)
         std::getline(std::cin, f_n);
         if (std::cin.eof()) exit(0);
 }
-    if(f_n.length() >= 10)
-        f_n = f_n.substr(0, 9) + '.';
+    // if(f_n.length() >= 10)
+    //     f_n = f_n.substr(0, 9) + '.';
     
     std::cout << "Last Name : ";
     std::getline(std::cin, l_n);
@@ -36,8 +36,8 @@ void    add(PhoneBook *phonebook)
         std::getline(std::cin, l_n);
         if (std::cin.eof()) exit(0);
         }
-    if(l_n.length() >= 10)
-        l_n = l_n.substr(0, 9) + '.';
+    // if(l_n.length() >= 10)
+    //     l_n = l_n.substr(0, 9) + '.';
 
     std::cout << "Nick Name : ";
     std::getline(std::cin, n_m);
@@ -48,8 +48,8 @@ void    add(PhoneBook *phonebook)
         std::getline(std::cin, n_m);
         if (std::cin.eof()) exit(0);
         }
-    if(n_m.length() >= 10)
-        n_m = f_n.substr(0, 9) + '.';
+    // if(n_m.length() >= 10)
+    //     n_m = f_n.substr(0, 9) + '.';
     
     std::cout << "Dark Secret : ";
     std::getline(std::cin, d_s);
@@ -60,8 +60,8 @@ void    add(PhoneBook *phonebook)
         std::getline(std::cin, d_s);
         if (std::cin.eof()) exit(0);
         }
-    if(d_s.length() >= 10)
-        d_s = d_s.substr(0, 9) + '.';
+    // if(d_s.length() >= 10)
+    //     d_s = d_s.substr(0, 9) + '.';
     
     std::cout << "Phone Number : ";
     std::getline(std::cin, p_n);
@@ -72,8 +72,8 @@ void    add(PhoneBook *phonebook)
         std::getline(std::cin, p_n);
         if (std::cin.eof()) exit(0);
     }
-    if(p_n.length() >= 10)
-        p_n = p_n.substr(0, 9) + '.';
+    // if(p_n.length() >= 10)
+    //     p_n = p_n.substr(0, 9) + '.';
     
     Contact contact;
     contact.set_value(f_n, l_n, n_m, d_s, p_n);
@@ -94,18 +94,40 @@ void    search(PhoneBook *PhoneBook)
     while(i < PhoneBook->get_index()){
         contact = PhoneBook->get_contact(i);
         std::cout<<'|'<< std::setw(10) << i+1;
-        std::cout<<'|'<< std::setw(10) << contact.get_f_n();
-        std::cout<<'|'<< std::setw(10) << contact.get_l_n();
-        std::cout<<'|'<< std::setw(10) << contact.get_n_n()<< '|'<<std::endl;
+
+        std::string first = contact.get_f_n();
+        if(first.length() >= 10)
+            first = first.substr(0, 9) + '.';
+        std::cout<<'|'<< std::setw(10) << first;
+        
+        std::string last = contact.get_l_n();
+        if(last.length() >= 10)
+            last = last.substr(0, 9) + '.';        
+        std::cout<<'|'<< std::setw(10) << last;
+        
+        std::string nickname = contact.get_n_n();
+        if(nickname.length() >= 10)
+            nickname = nickname.substr(0, 9) + '.';
+        std::cout<<'|'<< std::setw(10) << nickname<< '|'<<std::endl;
+        
         std::cout<<"---------------------------------------------"<<std::endl;
         i++;
     }
     std::cout<<"Enter Index : ";
-    int a;
-    std::getline(std::cin,a);
+    std::string in;
+    std::getline(std::cin,in);
     if (std::cin.eof()) exit(0);
-    contact = PhoneBook->get_contact(a);
-    std::cout<< "First name : "<< contact.get_f_n();
+    int a = atoi(in.c_str());
+
+    if (a <= 0 || a > PhoneBook->get_index()){
+        std::cout<< "Invalid Index" << std::endl;
+        return ;
+    }
+    contact = PhoneBook->get_contact(a - 1);
+    std::cout<< "First name : "<< contact.get_f_n() << std::endl;
+    std::cout << "Last name : " << contact.get_l_n() << std::endl;
+    std::cout << "Nickname : " << contact.get_n_n() << std::endl;
+    std::cout << "Phone Number : " << contact.get_p_n() << std::endl;
 }
 
 int main(int ac, char **av)
@@ -130,3 +152,4 @@ int main(int ac, char **av)
     }
     return 0;
 }
+
